@@ -44,14 +44,16 @@ public class DataJpaConfig {
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager(){
+    public PlatformTransactionManager transactionManager() {
         return new JpaTransactionManager();
     }
+
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter(){
+    public JpaVendorAdapter jpaVendorAdapter() {
         return new HibernateJpaVendorAdapter();
     }
-    public Properties hibernateProperties(){
+
+    public Properties hibernateProperties() {
         Properties hibernateProp = new Properties();
         hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         hibernateProp.put("hibernate.format_sql", true);
@@ -62,9 +64,10 @@ public class DataJpaConfig {
         hibernateProp.put("hibernate.jdbc.fetch_size", 50);
         return hibernateProp;
     }
+
     @Bean
-    public EntityManagerFactory entityManagerFactory(){
-        LocalContainerEntityManagerFactoryBean factoryBean=
+    public EntityManagerFactory entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean factoryBean =
                 new LocalContainerEntityManagerFactoryBean();
         factoryBean.setPackagesToScan("com.example.jpademo");
         factoryBean.setDataSource(dataSource());
